@@ -1,0 +1,26 @@
+<div class="buttons-wrapper">
+    <a href="/" class="logo">ShareBin</a>
+    <div class="buttons">
+        <a href="/new" class="btn">New</a>
+        <% if(locals.canSave) { %>
+        <button type="submit" class="btn">Save</button>
+        <% }  %>
+        <% if(locals.id != null) { %>
+        <a href="/<%= locals.id %>/duplicate" class="btn">Duplicate</a>
+        <a href="javascript:history.back()" class="btn">Edit</a>
+        <button type="button" class="linkBtn" onclick="copyLink()">Copy Link</button>
+        <% } %>
+    </div>
+    <script>
+        const copyLink = () => {
+            var dummy = document.createElement('input'),
+                text = window.location.href;
+
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+        }
+    </script>
+</div>

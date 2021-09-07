@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"
+        integrity="sha512-MinqHeqca99q5bWxFNQEQpplMBFiUNrEwuuDj2rCSh1DgeeTXUgvgYIHZ1puBS9IKBkdfLMSk/ZWVDasa3Y/2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/base16/solarized-dark.min.css"
+        integrity="sha512-JPpsArcPmVD/lHCCuZeG6Kx4x2qURRXHXxKYaXYJiKEKaoLOcXKDYqQ4jSeauXbk+U6uZ1UzrGO85y+lpys0Og=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        hljs.highlightAll();
+    </script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/styles.css">
+    <title>ShareBin</title>
+</head>
+
+<body>
+    <%- include("_button.ejs", {id: locals.id}) %>
+    <div class="wrapper">
+        <div class="line-numbers">
+            <% for(let i=1; i<=code.split("\n").length; i++) { %>
+            <div><%= i %></div>
+            <% } %>
+        </div>
+        <div class="container">
+            <pre><code id="code-display" 
+            class="<%= locals.language ? `language-${locals.language}` : "" %>">
+            <%= code %></code></pre>
+        </div>
+    </div>
+    <%- include("footer.ejs") %>
+</body>
+
+</html>
